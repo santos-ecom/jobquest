@@ -1,6 +1,5 @@
 name: Deploy FTP Hostinger
 
-
 on:
 
 push:
@@ -9,20 +8,17 @@ branches:
 
 - main
 
-
 jobs:
 
 ftp-deploy:
 
 runs-on: ubuntu-latest
 
-
 steps:
 
 - name: Checkout
 
 uses: actions/checkout@v4
-
 
 - name: Deploy via FTP
 
