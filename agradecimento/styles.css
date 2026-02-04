@@ -116,3 +116,9 @@ p {
     padding: 2rem 1.5rem;
   }
 }
+
+.disclaimer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #666;
+}
