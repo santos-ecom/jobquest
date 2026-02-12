@@ -215,33 +215,51 @@ p {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
 }
 
-/* Override Digistore24 floating styles */
+/* Override Digistore24 floating styles - AGGRESSIVE RESET */
 div[id^="ds24b-"],
 .ds24b-container,
-.ds24b-badge {
-  position: static !important;
+.ds24b-badge,
+._2rvzkq-53TUAkYiu9dwuER {
+  position: relative !important;
   display: block !important;
-  margin: 1rem auto !important;
-  width: auto !important;
-  height: auto !important;
+  inset: auto !important;
+  margin: 0 auto !important;
+  padding: 15px 0 !important;
+  width: 100% !important;
   max-width: 100% !important;
-  bottom: auto !important;
-  left: auto !important;
-  right: auto !important;
-  top: auto !important;
+  height: auto !important;
+  background-color: #000 !important;
+  color: #ccc !important;
+  box-shadow: none !important;
+  z-index: 9999 !important;
+  border-top: 1px solid #333 !important;
+  text-align: center !important;
   transform: none !important;
   float: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
 }
 
-/* Ensure inner content is visible and centered */
-div[id^="ds24b-"]>div,
-.ds24b-container>div {
-  margin: 0 auto !important;
+/* Force children to center and look like part of footer */
+div[id^="ds24b-"] *,
+.ds24b-container * {
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Ensure links are white/visible */
+div[id^="ds24b-"] a {
+  color: #fff !important;
+  text-decoration: underline !important;
+}
+
+/* Hide unwanted close buttons */
+.ds24b-close {
+  display: none !important;
 }
