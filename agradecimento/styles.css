@@ -208,7 +208,7 @@ p {
   width: 100%;
   border-top: 1px solid #222;
   margin-top: 0;
-  /* Ensures it sits right below the gap */
+  /* Ensures layout sits below gap - retry deploy */
 }
 
 .trusted-badge-container {
