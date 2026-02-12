@@ -13,12 +13,274 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Inline Styles to Prevent Caching/Loading Issues -->
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #00d084;
+            --primary-hover: #00b070;
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-color: #ffffff;
+            --text-secondary: #aaaaaa;
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-family);
+            min-height: 100vh;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            gap: 40px;
+            padding-top: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Container */
+        .container {
+            margin: auto;
+            background-color: var(--surface-color);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid #333;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Logo */
+        .logo {
+            max-width: 150px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            filter: invert(1) brightness(100);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            background: linear-gradient(90deg, #fff, #bbb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #000;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 208, 132, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        .disclaimer {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Policy Bar */
+        .policy-bar {
+            background-color: #000;
+            padding: 1.5rem 0;
+            width: 100%;
+            border-top: 1px solid #222;
+        }
+
+        .policy-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .policy-container {
+                justify-content: space-between;
+            }
+        }
+
+        .policy-logo img {
+            height: 35px;
+            width: auto;
+            filter: invert(1) brightness(100);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .policy-logo img:hover {
+            opacity: 1;
+        }
+
+        .policy-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .policy-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .policy-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .policy-container {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+
+        /* Trusted Badge Bar */
+        .trusted-badge-bar {
+            background-color: #000;
+            padding: 1rem 0;
+            width: 100%;
+            border-top: 1px solid #222;
+            margin-top: 0;
+        }
+
+        .trusted-badge-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+        }
+
+        /* Override Digistore24 floating styles - AGGRESSIVE RESET */
+        div[id^="ds24b-"],
+        .ds24b-container,
+        .ds24b-badge,
+        ._2rvzkq-53TUAkYiu9dwuER {
+            position: relative !important;
+            display: block !important;
+            inset: auto !important;
+            margin: 0 auto !important;
+            padding: 15px 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+            background-color: #000 !important;
+            color: #ccc !important;
+            box-shadow: none !important;
+            z-index: 9999 !important;
+            border-top: 1px solid #333 !important;
+            text-align: center !important;
+            transform: none !important;
+            float: none !important;
+        }
+
+        /* Force children to center and look like part of footer */
+        div[id^="ds24b-"] *,
+        .ds24b-container * {
+            max-width: 900px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            text-align: center !important;
+        }
+
+        /* Ensure links are white/visible */
+        div[id^="ds24b-"] a {
+            color: #fff !important;
+            text-decoration: underline !important;
+        }
+
+        /* Hide unwanted close buttons */
+        .ds24b-close {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
-
 
     <div class="page-wrapper">
         <div class="container">
