@@ -36,6 +36,9 @@
             min-height: 100vh;
             text-align: center;
             line-height: 1.6;
+            display: flex;
+            /* Turn body into a flex container */
+            flex-direction: column;
         }
 
         .page-wrapper {
@@ -43,11 +46,15 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            width: 100%;
+            flex-grow: 1;
+            /* Allow it to take available space */
             gap: 40px;
             padding-top: 20px;
             position: relative;
             z-index: 10;
+            order: 1;
+            /* Force page content to come first */
         }
 
         /* Container */
@@ -217,7 +224,8 @@
             }
         }
 
-        /* Trusted Badge Bar */
+        /* Trusted Badge Bar remains part of Page Wrapper, typically at bottom. 
+           But if script injects elsewhere, we capture it below. */
         .trusted-badge-bar {
             background-color: #000;
             padding: 1rem 0;
@@ -236,7 +244,7 @@
             width: 100% !important;
         }
 
-        /* Override Digistore24 floating styles - AGGRESSIVE RESET */
+        /* Override Digistore24 floating styles - AGGRESSIVE RESET & ORDERING */
         div[id^="ds24b-"],
         .ds24b-container,
         .ds24b-badge,
@@ -257,7 +265,12 @@
             text-align: center !important;
             transform: none !important;
             float: none !important;
+            order: 999 !important;
+            /* Force injected elements to the VERY BOTTOM */
         }
+
+        /* Specific fix: If the element is INSIDE page-wrapper, order 999 works relative to page-wrapper.
+           If it's DIRECT CHILD of BODY, order 999 works relative to body (after page-wrapper's order 1). */
 
         /* Force children to center and look like part of footer */
         div[id^="ds24b-"] *,
