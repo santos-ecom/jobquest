@@ -11,20 +11,23 @@
 
 body {
   margin: 0;
-  padding: 20px 0 0 0;
-  /* Add top padding */
+  padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: var(--font-family);
+  min-height: 100vh;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.page-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  text-align: center;
-  line-height: 1.6;
   gap: 40px;
-  /* Add gap between flex items */
+  padding-top: 20px;
 }
 
 /* Container */
